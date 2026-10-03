@@ -1,0 +1,79 @@
+{
+  "file": "data\\raw\\WA_Fn-UseC_-HR-Employee-Attrition.csv",
+  "rows": 1470,
+  "columns_raw": 35,
+  "columns_enriched": 41,
+  "missing_cells": 0,
+  "duplicate_rows": 0,
+  "target_counts": {
+    "No": 1233,
+    "Yes": 237
+  },
+  "attrition_rate": 0.16122448979591836,
+  "features": {
+    "numeric": [
+      "MonthlyIncome",
+      "PercentSalaryHike",
+      "StockOptionLevel",
+      "JobLevel",
+      "TotalWorkingYears",
+      "YearsAtCompany",
+      "YearsSinceLastPromotion",
+      "YearsWithCurrManager",
+      "YearsInCurrentRole",
+      "JobSatisfaction",
+      "EnvironmentSatisfaction",
+      "RelationshipSatisfaction",
+      "WorkLifeBalance",
+      "JobInvolvement",
+      "PerformanceRating",
+      "DistanceFromHome",
+      "NumCompaniesWorked",
+      "TrainingTimesLastYear",
+      "TenurePromotionRatio",
+      "ManagerStabilityRatio",
+      "CompanyTenureRatio",
+      "SatisfactionIndex",
+      "PerformanceBenefitIndex",
+      "IncomePerLevel"
+    ],
+    "categorical": [
+      "Department",
+      "JobRole",
+      "BusinessTravel",
+      "OverTime"
+    ],
+    "engineered": [
+      "TenurePromotionRatio",
+      "ManagerStabilityRatio",
+      "CompanyTenureRatio",
+      "SatisfactionIndex",
+      "PerformanceBenefitIndex",
+      "IncomePerLevel"
+    ],
+    "excluded": [
+      "EmployeeNumber",
+      "EmployeeCount",
+      "Over18",
+      "StandardHours",
+      "DailyRate",
+      "HourlyRate",
+      "MonthlyRate",
+      "Age",
+      "Gender",
+      "MaritalStatus",
+      "Education",
+      "EducationField"
+    ]
+  },
+  "department_distribution": {
+    "Research & Development": 961,
+    "Sales": 446,
+    "Human Resources": 63
+  },
+  "attrition_by_department": {
+    "Human Resources": 0.19047619047619047,
+    "Research & Development": 0.1383975026014568,
+    "Sales": 0.2062780269058296
+  }
+}

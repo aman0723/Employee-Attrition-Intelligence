@@ -1,0 +1,252 @@
+{
+  "records": 1470,
+  "overall_attrition_rate": 0.16122448979591836,
+  "attrition_count": 237,
+  "retained_count": 1233,
+  "categorical_rates": {
+    "Department": [
+      {
+        "value": "Human Resources",
+        "count": 63,
+        "attrition_rate": 0.19047619047619047
+      },
+      {
+        "value": "Research & Development",
+        "count": 961,
+        "attrition_rate": 0.1383975026014568
+      },
+      {
+        "value": "Sales",
+        "count": 446,
+        "attrition_rate": 0.2062780269058296
+      }
+    ],
+    "JobRole": [
+      {
+        "value": "Healthcare Representative",
+        "count": 131,
+        "attrition_rate": 0.06870229007633588
+      },
+      {
+        "value": "Human Resources",
+        "count": 52,
+        "attrition_rate": 0.23076923076923078
+      },
+      {
+        "value": "Laboratory Technician",
+        "count": 259,
+        "attrition_rate": 0.23938223938223938
+      },
+      {
+        "value": "Manager",
+        "count": 102,
+        "attrition_rate": 0.049019607843137254
+      },
+      {
+        "value": "Manufacturing Director",
+        "count": 145,
+        "attrition_rate": 0.06896551724137931
+      },
+      {
+        "value": "Research Director",
+        "count": 80,
+        "attrition_rate": 0.025
+      },
+      {
+        "value": "Research Scientist",
+        "count": 292,
+        "attrition_rate": 0.16095890410958905
+      },
+      {
+        "value": "Sales Executive",
+        "count": 326,
+        "attrition_rate": 0.17484662576687116
+      },
+      {
+        "value": "Sales Representative",
+        "count": 83,
+        "attrition_rate": 0.39759036144578314
+      }
+    ],
+    "OverTime": [
+      {
+        "value": "No",
+        "count": 1054,
+        "attrition_rate": 0.10436432637571158
+      },
+      {
+        "value": "Yes",
+        "count": 416,
+        "attrition_rate": 0.30528846153846156
+      }
+    ],
+    "BusinessTravel": [
+      {
+        "value": "Non-Travel",
+        "count": 150,
+        "attrition_rate": 0.08
+      },
+      {
+        "value": "Travel_Frequently",
+        "count": 277,
+        "attrition_rate": 0.2490974729241877
+      },
+      {
+        "value": "Travel_Rarely",
+        "count": 1043,
+        "attrition_rate": 0.14956855225311602
+      }
+    ],
+    "JobSatisfaction": [
+      {
+        "value": "1",
+        "count": 289,
+        "attrition_rate": 0.22837370242214533
+      },
+      {
+        "value": "2",
+        "count": 280,
+        "attrition_rate": 0.16428571428571428
+      },
+      {
+        "value": "3",
+        "count": 442,
+        "attrition_rate": 0.16515837104072398
+      },
+      {
+        "value": "4",
+        "count": 459,
+        "attrition_rate": 0.11328976034858387
+      }
+    ],
+    "WorkLifeBalance": [
+      {
+        "value": "1",
+        "count": 80,
+        "attrition_rate": 0.3125
+      },
+      {
+        "value": "2",
+        "count": 344,
+        "attrition_rate": 0.1686046511627907
+      },
+      {
+        "value": "3",
+        "count": 893,
+        "attrition_rate": 0.1422172452407615
+      },
+      {
+        "value": "4",
+        "count": 153,
+        "attrition_rate": 0.17647058823529413
+      }
+    ],
+    "EnvironmentSatisfaction": [
+      {
+        "value": "1",
+        "count": 284,
+        "attrition_rate": 0.2535211267605634
+      },
+      {
+        "value": "2",
+        "count": 287,
+        "attrition_rate": 0.14982578397212543
+      },
+      {
+        "value": "3",
+        "count": 453,
+        "attrition_rate": 0.1368653421633554
+      },
+      {
+        "value": "4",
+        "count": 446,
+        "attrition_rate": 0.13452914798206278
+      }
+    ],
+    "PerformanceRating": [
+      {
+        "value": "3",
+        "count": 1244,
+        "attrition_rate": 0.1607717041800643
+      },
+      {
+        "value": "4",
+        "count": 226,
+        "attrition_rate": 0.16371681415929204
+      }
+    ],
+    "JobInvolvement": [
+      {
+        "value": "1",
+        "count": 83,
+        "attrition_rate": 0.3373493975903614
+      },
+      {
+        "value": "2",
+        "count": 375,
+        "attrition_rate": 0.18933333333333333
+      },
+      {
+        "value": "3",
+        "count": 868,
+        "attrition_rate": 0.14400921658986174
+      },
+      {
+        "value": "4",
+        "count": 144,
+        "attrition_rate": 0.09027777777777778
+      }
+    ]
+  },
+  "department_analysis": [
+    {
+      "department": "Human Resources",
+      "headcount": 63,
+      "attrition_rate": 0.19047619047619047,
+      "avg_salary": 6654.507936507936,
+      "avg_satisfaction": 2.7738095238095237
+    },
+    {
+      "department": "Research & Development",
+      "headcount": 961,
+      "attrition_rate": 0.1383975026014568,
+      "avg_salary": 6281.252861602497,
+      "avg_satisfaction": 2.726066597294485
+    },
+    {
+      "department": "Sales",
+      "headcount": 446,
+      "attrition_rate": 0.2062780269058296,
+      "avg_salary": 6959.17264573991,
+      "avg_satisfaction": 2.7354260089686098
+    }
+  ],
+  "performance_breakdown": {},
+  "tenure_bands": [
+    {
+      "band": "0-1 yrs",
+      "count": 215,
+      "attrition_rate": 0.3488372093023256
+    },
+    {
+      "band": "2-3 yrs",
+      "count": 255,
+      "attrition_rate": 0.1843137254901961
+    },
+    {
+      "band": "4-5 yrs",
+      "count": 306,
+      "attrition_rate": 0.13071895424836602
+    },
+    {
+      "band": "6-10 yrs",
+      "count": 448,
+      "attrition_rate": 0.12276785714285714
+    },
+    {
+      "band": "11+ yrs",
+      "count": 246,
+      "attrition_rate": 0.08130081300813008
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "champion_model": "Logistic Regression",
+  "calibration": "Sigmoid (Platt Scaling)",
+  "optimal_threshold": 0.3,
+  "cross_validation_benchmark": {
+    "Logistic Regression": {
+      "balanced_accuracy": {
+        "mean": 0.7512621540005991,
+        "std": 0.010847278906720888
+      },
+      "precision": {
+        "mean": 0.3802755405514026,
+        "std": 0.028567930295652043
+      },
+      "recall": {
+        "mean": 0.7368421052631579,
+        "std": 0.0332871332649303
+      },
+      "f1": {
+        "mean": 0.5003299498644341,
+        "std": 0.021067293758805738
+      },
+      "roc_auc": {
+        "mean": 0.8333385956816362,
+        "std": 0.019474109896760954
+      },
+      "average_precision": {
+        "mean": 0.6235267170540857,
+        "std": 0.05694597513199484
+      }
+    },
+    "Random Forest": {
+      "balanced_accuracy": {
+        "mean": 0.6916068243212244,
+        "std": 0.033868952180239977
+      },
+      "precision": {
+        "mean": 0.5177777777777777,
+        "std": 0.054704593889294106
+      },
+      "recall": {
+        "mean": 0.46842105263157896,
+        "std": 0.0713929471907923
+      },
+      "f1": {
+        "mean": 0.4890859736926356,
+        "std": 0.054481481845000714
+      },
+      "roc_auc": {
+        "mean": 0.8127773864749553,
+        "std": 0.030127391219729214
+      },
+      "average_precision": {
+        "mean": 0.5670054614662583,
+        "std": 0.05674426657119284
+      }
+    },
+    "Gradient Boosting": {
+      "balanced_accuracy": {
+        "mean": 0.6626281516743713,
+        "std": 0.037931919341195414
+      },
+      "precision": {
+        "mean": 0.7336062630180278,
+        "std": 0.07929826504157148
+      },
+      "recall": {
+        "mean": 0.3526315789473684,
+        "std": 0.08743814592545342
+      },
+      "f1": {
+        "mean": 0.46446800314723136,
+        "std": 0.07459948802711708
+      },
+      "roc_auc": {
+        "mean": 0.8161477181648168,
+        "std": 0.01956016715057574
+      },
+      "average_precision": {
+        "mean": 0.5991418390563326,
+        "std": 0.03881232955180457
+      }
+    }
+  },
+  "holdout_evaluation": {
+    "test_rows": 294,
+    "attrition_count": 47,
+    "threshold": 0.3,
+    "accuracy": 0.8503401360544217,
+    "balanced_accuracy": 0.7386510466017745,
+    "precision_attrition": 0.5294117647058824,
+    "recall_attrition": 0.574468085106383,
+    "f1_attrition": 0.5510204081632653,
+    "roc_auc": 0.7884400034456025,
+    "average_precision": 0.5690658843547707,
+    "brier_score": 0.1005746927246407,
+    "confusion_matrix": [
+      [
+        223,
+        24
+      ],
+      [
+        20,
+        27
+      ]
+    ],
+    "classification_report": {
+      "Stayed": {
+        "precision": 0.9176954732510288,
+        "recall": 0.902834008097166,
+        "f1-score": 0.9102040816326531,
+        "support": 247.0
+      },
+      "Left": {
+        "precision": 0.5294117647058824,
+        "recall": 0.574468085106383,
+        "f1-score": 0.5510204081632653,
+        "support": 47.0
+      },
+      "accuracy": 0.8503401360544217,
+      "macro avg": {
+        "precision": 0.7235536189784556,
+        "recall": 0.7386510466017745,
+        "f1-score": 0.7306122448979592,
+        "support": 294.0
+      },
+      "weighted avg": {
+        "precision": 0.8556229075992536,
+        "recall": 0.8503401360544217,
+        "f1-score": 0.8527835624045537,
+        "support": 294.0
+      }
+    }
+  },
+  "top_feature_importances": {
+    "JobRole": 0.35435851876872015,
+    "BusinessTravel": 0.1098840363946183,
+    "OverTime": 0.09558065156754784,
+    "TotalWorkingYears": 0.055262687832487625,
+    "MonthlyIncome": 0.04376848861189793,
+    "Department": 0.03893768927767836,
+    "ManagerStabilityRatio": 0.02899162154786754,
+    "NumCompaniesWorked": 0.027905371416282472,
+    "YearsSinceLastPromotion": 0.026845960207344456,
+    "StockOptionLevel": 0.025768224252707347,
+    "IncomePerLevel": 0.019479925598933166,
+    "SatisfactionIndex": 0.018991829756964604,
+    "DistanceFromHome": 0.01808390330041695,
+    "YearsWithCurrManager": 0.01694945405622472,
+    "EnvironmentSatisfaction": 0.015171582280894349
+  },
+  "data_validation": {
+    "file": "data\\raw\\WA_Fn-UseC_-HR-Employee-Attrition.csv",
+    "rows": 1470,
+    "columns_raw": 35,
+    "columns_enriched": 41,
+    "missing_cells": 0,
+    "duplicate_rows": 0,
+    "target_counts": {
+      "No": 1233,
+      "Yes": 237
+    },
+    "attrition_rate": 0.16122448979591836,
+    "features": {
+      "numeric": [
+        "MonthlyIncome",
+        "PercentSalaryHike",
+        "StockOptionLevel",
+        "JobLevel",
+        "TotalWorkingYears",
+        "YearsAtCompany",
+        "YearsSinceLastPromotion",
+        "YearsWithCurrManager",
+        "YearsInCurrentRole",
+        "JobSatisfaction",
+        "EnvironmentSatisfaction",
+        "RelationshipSatisfaction",
+        "WorkLifeBalance",
+        "JobInvolvement",
+        "PerformanceRating",
+        "DistanceFromHome",
+        "NumCompaniesWorked",
+        "TrainingTimesLastYear",
+        "TenurePromotionRatio",
+        "ManagerStabilityRatio",
+        "CompanyTenureRatio",
+        "SatisfactionIndex",
+        "PerformanceBenefitIndex",
+        "IncomePerLevel"
+      ],
+      "categorical": [
+        "Department",
+        "JobRole",
+        "BusinessTravel",
+        "OverTime"
+      ],
+      "engineered": [
+        "TenurePromotionRatio",
+        "ManagerStabilityRatio",
+        "CompanyTenureRatio",
+        "SatisfactionIndex",
+        "PerformanceBenefitIndex",
+        "IncomePerLevel"
+      ],
+      "excluded": [
+        "EmployeeNumber",
+        "EmployeeCount",
+        "Over18",
+        "StandardHours",
+        "DailyRate",
+        "HourlyRate",
+        "MonthlyRate",
+        "Age",
+        "Gender",
+        "MaritalStatus",
+        "Education",
+        "EducationField"
+      ]
+    },
+    "department_distribution": {
+      "Research & Development": 961,
+      "Sales": 446,
+      "Human Resources": 63
+    },
+    "attrition_by_department": {
+      "Human Resources": 0.19047619047619047,
+      "Research & Development": 0.1383975026014568,
+      "Sales": 0.2062780269058296
+    }
+  }
+}

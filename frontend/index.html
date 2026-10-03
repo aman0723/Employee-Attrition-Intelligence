@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RetentionIntel | Enterprise Employee Attrition Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <!-- Header / Top Navigation -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-logo">RI</div>
+        <div>
+          <span class="brand-name">Retention<span>Intel</span></span>
+          <span class="brand-badge">Enterprise Edition v2.0</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <button class="nav-tab active" data-tab="tab-overview">Executive Overview</button>
+        <button class="nav-tab" data-tab="tab-simulator">Risk & Retention Engine</button>
+        <button class="nav-tab" data-tab="tab-departments">Department Analytics</button>
+        <button class="nav-tab" data-tab="tab-governance">ML Governance & Benchmark</button>
+      </nav>
+      <div class="system-status">
+        <span class="status-indicator"></span>
+        <span id="model-status-text">ML Model Ready</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="app-container">
+
+    <!-- ==================== TAB 1: EXECUTIVE OVERVIEW ==================== -->
+    <section id="tab-overview" class="tab-content active">
+      <div class="section-hero">
+        <div>
+          <span class="pill-tag">PEOPLE ANALYTICS DASHBOARD</span>
+          <h1>Workforce Turnover & Capital Risk Intelligence</h1>
+          <p class="hero-desc">Identify flight risks early, protect critical talent, and prevent six-figure replacement costs through data-driven HR interventions.</p>
+        </div>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="switchToTab('tab-simulator')">Launch Flight Risk Simulator ➔</button>
+        </div>
+      </div>
+
+      <!-- KPI Stat Cards -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">TOTAL WORKFORCE ANALYZED</div>
+          <div class="kpi-val" id="kpi-records">1,470</div>
+          <div class="kpi-sub">Full sample employee cohort</div>
+        </div>
+        <div class="kpi-card danger">
+          <div class="kpi-label">HISTORICAL ATTRITION RATE</div>
+          <div class="kpi-val" id="kpi-rate">16.1%</div>
+          <div class="kpi-sub"><span id="kpi-left-count">237</span> Departures documented</div>
+        </div>
+        <div class="kpi-card warning">
+          <div class="kpi-label">ESTIMATED TURNOVER LOSS</div>
+          <div class="kpi-val" id="kpi-loss">$6.75M</div>
+          <div class="kpi-sub">Benchmark: ~$28.5k per unplanned exit</div>
+        </div>
+        <div class="kpi-card success">
+          <div class="kpi-label">CHAMPION MODEL ACCURACY</div>
+          <div class="kpi-val" id="kpi-auc">0.833 AUC</div>
+          <div class="kpi-sub">Calibrated Logistic + Ensemble Benchmark</div>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3>Department-wise Turnover Rates</h3>
+              <p>Historical attrition proportion across organizational divisions</p>
+            </div>
+            <span class="card-badge">Breakdown</span>
+          </div>
+          <div class="chart-container" id="deptChartWrap">
+            <canvas id="deptChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3>Turnover Probability by Company Tenure</h3>
+              <p>Attrition vulnerability across employee tenure stages</p>
+            </div>
+            <span class="card-badge">Tenure Bands</span>
+          </div>
+          <div class="chart-container" id="tenureChartWrap">
+            <canvas id="tenureChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9-Box Talent Flight Matrix Explainer -->
+      <div class="card mt-6">
+        <div class="card-header">
+          <div>
+            <h3>Executive 9-Box Talent Flight Matrix</h3>
+            <p>How HR leaders prioritize retention: Mapping Employee Value & Performance against Flight Risk</p>
+          </div>
+        </div>
+        <div class="matrix-grid">
+          <div class="matrix-cell critical">
+            <div class="matrix-tag">🚨 TOP PRIORITY</div>
+            <h4>CRITICAL FLIGHT RISK</h4>
+            <p><strong>High Impact Star + High Flight Risk</strong></p>
+            <p class="small">Immediate executive & manager retention outreach required. High replacement cost & project disruption.</p>
+          </div>
+          <div class="matrix-cell warning">
+            <div class="matrix-tag">⚠️ ATTENTION</div>
+            <h4>PRIORITY RETENTION WATCH</h4>
+            <p><strong>High Impact Star + Moderate Risk</strong></p>
+            <p class="small">Conduct proactive compensation calibration & career trajectory check-in to prevent escalation.</p>
+          </div>
+          <div class="matrix-cell success">
+            <div class="matrix-tag">🌟 STABLE ANCHOR</div>
+            <h4>SAFE CORE CHAMPION</h4>
+            <p><strong>High Impact Star + Low Risk</strong></p>
+            <p class="small">High satisfaction and loyalty. Provide leadership mentorship tracks and continued recognition.</p>
+          </div>
+          <div class="matrix-cell neutral">
+            <div class="matrix-tag">🔄 MANAGED TRANSITION</div>
+            <h4>NON-REGRETTABLE ATTRITION</h4>
+            <p><strong>Low Contributor + High Risk</strong></p>
+            <p class="small">Natural attrition; replacement risk is low. Avoid counter-offers and allow smooth handover.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 2: RISK & RETENTION ENGINE ==================== -->
+    <section id="tab-simulator" class="tab-content">
+      <div class="section-hero">
+        <div>
+          <span class="pill-tag">INTERACTIVE INTELLIGENCE</span>
+          <h1>Employee Flight Risk & Retention Engine</h1>
+          <p class="hero-desc">Evaluate flight probability for individual profiles, uncover root causes, map to the 9-Box Talent Matrix, and simulate retention outcomes.</p>
+        </div>
+      </div>
+
+      <!-- Quick Personas -->
+      <div class="persona-bar">
+        <span class="persona-label">⚡ 1-Click Persona Demos:</span>
+        <button class="persona-btn" onclick="loadPersona(0)">🚨 Star R&D Lead (High Risk)</button>
+        <button class="persona-btn" onclick="loadPersona(1)">⚠️ Sales Rep (Burnout Risk)</button>
+        <button class="persona-btn" onclick="loadPersona(2)">🔄 Lab Tech (Low Impact / Exit)</button>
+        <button class="persona-btn" onclick="loadPersona(3)">🌟 Senior HR Lead (Safe Anchor)</button>
+      </div>
+
+      <div class="engine-layout">
+        <!-- Input Form -->
+        <div class="card form-card">
+          <div class="card-header">
+            <h3>Employee Profile Parameters</h3>
+            <span class="card-badge">Input Profile</span>
+          </div>
+
+          <form id="employee-form">
+            <div class="form-section">
+              <h4>1. Organizational Role & Hierarchy</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Department</label>
+                  <select name="Department" id="inp-dept">
+                    <option value="Research & Development">Research & Development</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Human Resources">Human Resources</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Job Role</label>
+                  <select name="JobRole" id="inp-role">
+                    <option value="Research Scientist">Research Scientist</option>
+                    <option value="Laboratory Technician">Laboratory Technician</option>
+                    <option value="Sales Executive">Sales Executive</option>
+                    <option value="Sales Representative">Sales Representative</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Healthcare Representative">Healthcare Representative</option>
+                    <option value="Manufacturing Director">Manufacturing Director</option>
+                    <option value="Human Resources">Human Resources</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Job Seniority Level (1-5)</label>
+                  <select name="JobLevel" id="inp-joblevel">
+                    <option value="1">Level 1 - Junior / Entry</option>
+                    <option value="2">Level 2 - Specialist</option>
+                    <option value="3" selected>Level 3 - Senior</option>
+                    <option value="4">Level 4 - Lead / Staff</option>
+                    <option value="5">Level 5 - Director / Executive</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h4>2. Compensation & Career Tenure</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Monthly Salary ($ USD)</label>
+                  <input type="number" name="MonthlyIncome" id="inp-income" min="1000" max="25000" value="6800" required>
+                </div>
+                <div class="form-group">
+                  <label>Years at Company</label>
+                  <input type="number" name="YearsAtCompany" id="inp-tenure" min="0" max="40" value="7" required>
+                </div>
+                <div class="form-group">
+                  <label>Years Since Last Promotion</label>
+                  <input type="number" name="YearsSinceLastPromotion" id="inp-promo" min="0" max="20" value="5" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Years with Current Manager</label>
+                  <input type="number" name="YearsWithCurrManager" id="inp-mgr" min="0" max="20" value="2" required>
+                </div>
+                <div class="form-group">
+                  <label>Total Experience (Years)</label>
+                  <input type="number" name="TotalWorkingYears" id="inp-exp" min="0" max="45" value="11" required>
+                </div>
+                <div class="form-group">
+                  <label>Stock Option Tier (0-3)</label>
+                  <select name="StockOptionLevel" id="inp-stock">
+                    <option value="0">0 - None</option>
+                    <option value="1">1 - Standard Grant</option>
+                    <option value="2">2 - High Grant</option>
+                    <option value="3">3 - Executive Grant</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h4>3. Workload, Performance & Engagement</h4>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Overtime Work Required?</label>
+                  <select name="OverTime" id="inp-overtime">
+                    <option value="Yes">Yes (Regular Overtime)</option>
+                    <option value="No">No (Standard Hours)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Performance Rating</label>
+                  <select name="PerformanceRating" id="inp-rating">
+                    <option value="3">Rating 3 - High Performer</option>
+                    <option value="4" selected>Rating 4 - Outstanding Performer</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Job Involvement</label>
+                  <select name="JobInvolvement" id="inp-involvement">
+                    <option value="1">1 - Low Disengaged</option>
+                    <option value="2">2 - Moderate</option>
+                    <option value="3" selected>3 - High Involvement</option>
+                    <option value="4">4 - Very High Involvement</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Job Satisfaction</label>
+                  <select name="JobSatisfaction" id="inp-jobsat">
+                    <option value="1">1 - Dissatisfied</option>
+                    <option value="2" selected>2 - Neutral / Low</option>
+                    <option value="3">3 - Satisfied</option>
+                    <option value="4">4 - Highly Satisfied</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Work-Life Balance</label>
+                  <select name="WorkLifeBalance" id="inp-wlb">
+                    <option value="1" selected>1 - Bad (Severe Strain)</option>
+                    <option value="2">2 - Fair</option>
+                    <option value="3">3 - Good</option>
+                    <option value="4">4 - Best Harmony</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Business Travel</label>
+                  <select name="BusinessTravel" id="inp-travel">
+                    <option value="Non-Travel">Non-Travel</option>
+                    <option value="Travel_Rarely" selected>Travel Rarely</option>
+                    <option value="Travel_Frequently">Travel Frequently</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="btn-predict">
+              ⚡ Run AI Flight Risk Diagnostic
+            </button>
+            <div id="btn-quick-result" class="btn-quick-result" style="display:none;"></div>
+          </form>
+        </div>
+
+        <!-- Diagnostic & Recommendations Panel -->
+        <div class="results-col">
+          <!-- Prediction Hero Card -->
+          <div class="card result-card" id="result-box">
+            <div class="result-header">
+              <div>
+                <span class="card-badge" id="res-badge">Diagnostic Output</span>
+                <h3 id="res-title">Diagnostic Results</h3>
+              </div>
+              <div class="risk-badge" id="res-tier-pill">Evaluating</div>
+            </div>
+
+            <div class="result-metrics-row">
+              <div class="metric-block">
+                <span class="m-label">FLIGHT PROBABILITY</span>
+                <strong class="m-val" id="res-prob">--%</strong>
+                <span class="m-sub" id="res-prob-sub">Alert Cutoff: 30.0%</span>
+              </div>
+              <div class="metric-block">
+                <span class="m-label">EMPLOYEE VALUE SCORE</span>
+                <strong class="m-val" id="res-val-score">-- / 100</strong>
+                <span class="m-sub" id="res-val-tier">Star Performer</span>
+              </div>
+              <div class="metric-block">
+                <span class="m-label">ESTIMATED REPLACEMENT LOSS</span>
+                <strong class="m-val highlight" id="res-cost">$--</strong>
+                <span class="m-sub">Turnover Cost Impact</span>
+              </div>
+            </div>
+
+            <!-- Progress bar -->
+            <div class="risk-bar-wrap">
+              <div class="risk-bar-fill" id="res-bar" style="width: 0%"></div>
+            </div>
+
+            <!-- 9-Box Placement Box -->
+            <div class="matrix-status-box" id="matrix-status-box">
+              <div class="matrix-status-header">
+                <span class="matrix-icon">📌</span>
+                <div>
+                  <strong id="matrix-quadrant-title">TALENT RETENTION MATRIX</strong>
+                  <p id="matrix-quadrant-desc">Submit profile to compute placement.</p>
+                </div>
+              </div>
+              <div class="matrix-recommendation-note" id="matrix-stance">
+                <strong>HR Recommended Stance:</strong> <span>--</span>
+              </div>
+            </div>
+
+            <!-- Root Causes & Anchors -->
+            <div class="explain-grid">
+              <div class="explain-card danger">
+                <h4>⚠️ Primary Turnover Drivers (Root Causes)</h4>
+                <ul id="root-causes-list">
+                  <li>Run diagnostic to identify specific drivers.</li>
+                </ul>
+              </div>
+              <div class="explain-card success">
+                <h4>🛡️ Retention Anchors (Protective Factors)</h4>
+                <ul id="retention-anchors-list">
+                  <li>Run diagnostic to identify loyalty factors.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Action Checklist -->
+            <div class="action-box">
+              <h4>🎯 Prescriptive HR Retention Plan</h4>
+              <ul class="action-list" id="action-list">
+                <li>Automated actionable guidance will appear here.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- INTERACTIVE WHAT-IF SIMULATOR -->
+          <div class="card mt-4 simulator-card">
+            <div class="card-header">
+              <div>
+                <h3>🔬 "What-If" Retention Scenario Simulator</h3>
+                <p>Simulate the retention impact of proposed HR interventions before taking action</p>
+              </div>
+              <span class="card-badge">Live Counterfactual</span>
+            </div>
+
+            <div class="simulator-controls">
+              <label class="toggle-pill">
+                <input type="checkbox" id="sim-overtime">
+                <span>🚫 Eliminate Overtime Requirement</span>
+              </label>
+
+              <label class="toggle-pill">
+                <input type="checkbox" id="sim-promotion">
+                <span>🚀 Fast-Track Promotion & Grade Elevation</span>
+              </label>
+
+              <label class="toggle-pill">
+                <input type="checkbox" id="sim-wlb">
+                <span>⚖️ Improve Work-Life Balance & Hybrid Flexibility</span>
+              </label>
+
+              <div class="slider-control">
+                <div class="slider-label">
+                  <span>💰 Salary Correction / Hike Adjustment</span>
+                  <b id="sim-hike-val">+15%</b>
+                </div>
+                <input type="range" id="sim-hike" min="0" max="35" step="5" value="15">
+              </div>
+
+              <button class="btn btn-secondary btn-block mt-3" id="btn-run-simulation" onclick="runScenarioSimulation()">
+                Simulate Retention Interventions ➔
+              </button>
+            </div>
+
+            <!-- Simulation Outcome Result -->
+            <div class="sim-outcome" id="sim-outcome" style="display:none;">
+              <div class="sim-header">
+                <strong>Simulated Retention Impact:</strong>
+                <span class="badge-pill success" id="sim-badge">-42% Risk Drop</span>
+              </div>
+              <div class="sim-comparison">
+                <div class="sim-stat">
+                  <span>Baseline Probability</span>
+                  <strong class="text-danger" id="sim-base-prob">68.4%</strong>
+                </div>
+                <div class="sim-arrow">➔</div>
+                <div class="sim-stat">
+                  <span>Simulated Probability</span>
+                  <strong class="text-success" id="sim-new-prob">24.2%</strong>
+                </div>
+                <div class="sim-stat">
+                  <span>Capital Loss Prevented</span>
+                  <strong class="text-primary" id="sim-savings">$42,500</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 3: DEPARTMENT ANALYTICS ==================== -->
+    <section id="tab-departments" class="tab-content">
+      <div class="section-hero">
+        <div>
+          <span class="pill-tag">ORGANIZATIONAL SEGMENTS</span>
+          <h1>Departmental Turnover Intelligence</h1>
+          <p class="hero-desc">Understand how turnover dynamics, average compensation, and employee satisfaction differ across business units.</p>
+        </div>
+      </div>
+
+      <div class="dept-card-grid" id="dept-card-container">
+        <!-- Rendered dynamically via JS -->
+      </div>
+
+      <div class="card mt-6">
+        <div class="card-header">
+          <h3>Workforce Attrition Drivers by Job Role</h3>
+          <p>High-risk job roles identified from historical patterns</p>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Job Role</th>
+                <th>Department</th>
+                <th>Historical Risk Tier</th>
+                <th>Dominant Turnover Factors</th>
+                <th>Recommended HR Intervention</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Sales Representative</strong></td>
+                <td>Sales</td>
+                <td><span class="risk-pill high">High (39.8%)</span></td>
+                <td>Excessive travel fatigue, entry pay grade, high commissions pressure</td>
+                <td>Territory workload rebalancing, base compensation benchmarking</td>
+              </tr>
+              <tr>
+                <td><strong>Laboratory Technician</strong></td>
+                <td>Research & Development</td>
+                <td><span class="risk-pill high">High (23.9%)</span></td>
+                <td>Shift overtime, repetitive tasks, career stagnation</td>
+                <td>Clear technical career pathway, skill certification sponsorships</td>
+              </tr>
+              <tr>
+                <td><strong>Human Resources</strong></td>
+                <td>Human Resources</td>
+                <td><span class="risk-pill medium">Medium (19.0%)</span></td>
+                <td>Limited team mobility, operational isolation</td>
+                <td>Cross-functional leadership rotations, wellness benefits</td>
+              </tr>
+              <tr>
+                <td><strong>Research Scientist</strong></td>
+                <td>Research & Development</td>
+                <td><span class="risk-pill medium">Medium (16.1%)</span></td>
+                <td>Intellectual stagnation, patent recognition delays</td>
+                <td>R&D innovation grants, flexible autonomy on technical projects</td>
+              </tr>
+              <tr>
+                <td><strong>Manufacturing Director</strong></td>
+                <td>Research & Development</td>
+                <td><span class="risk-pill low">Low (6.9%)</span></td>
+                <td>High compensation stability, strong stock ownership</td>
+                <td>Executive retention grants and succession planning</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 4: ML GOVERNANCE & BENCHMARK ==================== -->
+    <section id="tab-governance" class="tab-content">
+      <div class="section-hero">
+        <div>
+          <span class="pill-tag">MODEL TRANSPARENCY</span>
+          <h1>Machine Learning Governance & Benchmark</h1>
+          <p class="hero-desc">Rigorous multi-model comparison, probability calibration, and ethical AI safeguards for campus placements and technical reviews.</p>
+        </div>
+      </div>
+
+      <div class="benchmark-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3>Algorithm Benchmark (5-Fold Stratified CV)</h3>
+            <span class="card-badge">Cross-Validation</span>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Model Architecture</th>
+                <th>ROC-AUC</th>
+                <th>PR-AUC</th>
+                <th>F1 Score</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Logistic Regression (Calibrated)</strong></td>
+                <td>0.833</td>
+                <td>0.624</td>
+                <td>0.500</td>
+                <td><span class="risk-pill low">Champion Model</span></td>
+              </tr>
+              <tr>
+                <td><strong>Gradient Boosting Classifier</strong></td>
+                <td>0.816</td>
+                <td>0.599</td>
+                <td>0.464</td>
+                <td><span class="risk-pill neutral">Candidate</span></td>
+              </tr>
+              <tr>
+                <td><strong>Random Forest Classifier</strong></td>
+                <td>0.813</td>
+                <td>0.567</td>
+                <td>0.489</td>
+                <td><span class="risk-pill neutral">Candidate</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="table-note mt-3">Logistic Regression with domain-engineered features delivered the highest ROC-AUC and PR-AUC, coupled with direct linear log-odds transparency.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Holdout Performance (Untouched 20% Test Set)</h3>
+            <span class="card-badge">Generalization</span>
+          </div>
+          <div class="metric-row-compact">
+            <div class="m-tile">
+              <span>Holdout ROC-AUC</span>
+              <strong>0.788</strong>
+            </div>
+            <div class="m-tile">
+              <span>Holdout Precision</span>
+              <strong>52.9%</strong>
+            </div>
+            <div class="m-tile">
+              <span>Holdout Recall</span>
+              <strong>57.4%</strong>
+            </div>
+            <div class="m-tile">
+              <span>Holdout F1</span>
+              <strong>0.551</strong>
+            </div>
+          </div>
+          <div class="governance-alert mt-4">
+            <strong>Ethical AI & Bias Mitigation Policy:</strong>
+            <p>Demographic variables (Gender, Age, Race, Marital Status) were strictly excluded from model feature vectors to ensure non-discriminatory predictions and prevent disparate impact under EEOC/Responsible AI guidelines.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Figures Showcase -->
+      <div class="card mt-6">
+        <div class="card-header">
+          <h3>Generated Evaluation & Diagnostic Visuals</h3>
+          <p>Saved directly to <code>reports/figures/</code></p>
+        </div>
+        <div class="figures-gallery">
+          <div class="fig-item">
+            <h4>Confusion Matrix</h4>
+            <img src="/figures/confusion_matrix.png" alt="Confusion Matrix" onerror="this.style.display='none'">
+          </div>
+          <div class="fig-item">
+            <h4>Predictive Feature Importance</h4>
+            <img src="/figures/feature_importance.png" alt="Feature Importance" onerror="this.style.display='none'">
+          </div>
+          <div class="fig-item">
+            <h4>Model Benchmark Comparison</h4>
+            <img src="/figures/model_comparison.png" alt="Model Comparison" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <span>RETENTION INTEL &middot; ENTERPRISE PEOPLE ANALYTICS &middot; MAJOR ACADEMIC & PLACEMENT PROJECT</span>
+      <span>Engineered with Python, Scikit-Learn, Pandas, Flask, and Modern Web UI</span>
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
